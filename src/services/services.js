@@ -18,7 +18,7 @@ const items = [
         imageUrl: "https://www.flaticon.com/svg/static/icons/svg/2548/2548636.svg",
         name: "Папая",
         price: 10,
-        sale: "25$ за 3 кг"
+        sale: "25$ за каждые 3 кг"
     },
 ];
 

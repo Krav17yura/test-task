@@ -4,7 +4,7 @@ import minusIcon from './minus-svgrepo-com.svg'
 import plusIcon from './plus-svgrepo-com.svg'
 import deleteIcon from './trash.svg'
 
-const CartItem = ({id, name, imageUrl, totalPrice, totalCount, onRemoveItem, onPlusItem, onMinusItem}) => {
+const CartItem = ({id, name, imageUrl, totalPrice, totalCount, onRemoveItem, onPlusItem, onMinusItem }) => {
 
     const handleRemoveClick = () => {
         onRemoveItem(id);

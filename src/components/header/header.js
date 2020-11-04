@@ -26,7 +26,7 @@ const Header = () => {
                     <div className="cart__info">
                         <ul>
                             <li>Количество кг: {totalCount}</li>
-                            <li>Сумма заказа:  {totalPrice}</li>
+                            <li>Сумма заказа:  {totalPrice}$</li>
                         </ul>
                     </div>
                 </div>
