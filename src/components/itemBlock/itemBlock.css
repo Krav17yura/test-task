@@ -1,0 +1,90 @@
+.content__item {
+    display: flex;
+    padding: 40px;
+    max-width: 90%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+
+
+.item-block {
+   background-color: rgba(124, 162, 106, 0.8);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 20px;
+}
+
+.item-block__image {
+    width: 200px;
+}
+
+.item-block__title {
+    text-align: center;
+    font-family: Bahnschrift, serif;
+    color: #181818;
+    margin-top: 10px;
+    font-size: 22px;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+
+.item-block__footer {
+display: flex;justify-content: center;
+}
+
+.item-block__price {
+    font-family: Bahnschrift, serif;
+    color: #181818;
+    margin-top: 10px;
+    font-size: 22px;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+
+.item-block__sale{
+    text-align: center;
+    margin-top: 2px;
+    font-size: 17px;
+    font-weight: 400;
+    color: #f1dcdc;
+}
+.item-block__button {
+    border-radius: 15px;
+    background-color: #968585;
+}
+
+
+.item-block__button {
+    box-shadow: inset 0px 0px 15px 3px #23395e;
+    background: #393b3e linear-gradient(to bottom, #5b6670 5%, #40454c 100%);
+    border-radius: 17px;
+    margin: 5px 0 10px 0 ;
+    border: 1px solid #1f2f47;
+    display: inline-block;
+    cursor: pointer;
+    color: #baa7a7;
+    font-family: Arial, serif;
+    font-size: 15px;
+    padding: 6px 13px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #263666;
+}
+
+.item-block__button:hover {
+    background: #415989 linear-gradient(to bottom, #415989 5%, #2e466e 100%);
+}
+
+.item-block__button:active {
+    position: relative;
+    top: 1px;
+}
+
+@media(max-width: 662px){
+    .content__item {
+
+        justify-content: center;
+    }
+}
