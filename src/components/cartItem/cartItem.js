@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import './cartItem.css'
 import minusIcon from './minus-svgrepo-com.svg'
 import plusIcon from './plus-svgrepo-com.svg'
@@ -19,7 +19,6 @@ const CartItem = ({id, name, imageUrl, totalPrice, totalCount, onRemoveItem, onP
     };
 
     return (
-        <Fragment>
             <div className="cart__item">
                 <div className="cart__Item-img">
                     <img className='cartImg' src={imageUrl}
@@ -44,7 +43,6 @@ const CartItem = ({id, name, imageUrl, totalPrice, totalCount, onRemoveItem, onP
                     <img src={deleteIcon} alt="" width='20'/>
                 </button>
             </div>
-        </Fragment>
     )
 };
 

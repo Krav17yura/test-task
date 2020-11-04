@@ -6,9 +6,8 @@ import cartIcon from './cart.svg'
 import {useSelector} from "react-redux";
 
 const Header = () => {
-    const totalCount = useSelector((state) => state.reCart.totalCount)
-    const totalPrice = useSelector((state) => state.reCart.totalPrice)
-    return (
+    const {totalCount, totalPrice} = useSelector(({reCart}) => reCart)
+     return (
         <div className="header">
             <div className="container">
                 <Link to='/'>
