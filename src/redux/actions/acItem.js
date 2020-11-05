@@ -19,7 +19,22 @@ export const setItems = (data) => {
 
 export const  fetchItems = () => dispatch => {
     dispatch(isLoaded(false));
-    const data = gotServices.getItems();
-    dispatch(setItems(data))
-    dispatch(isLoaded(true));
+
+    const p = new Promise(((resolve) => {
+            setTimeout(() => {
+                const data = gotServices.getItems();
+                resolve(data)
+            }, 1000)
+    }))
+    p.then(data => {
+        return new Promise(((resolve) => {
+            setTimeout(() => {
+
+                dispatch(setItems(data))
+                resolve()
+            }, 1000)
+        }))
+    }).then( () => dispatch(isLoaded(true)))
+        .catch(err => console.log(err))
+
 }

@@ -1,6 +1,7 @@
 const getTotalPrice = arr => {
     const mass = arr.filter(obj => obj.sale);
-    let newArr = mass.map((value, index, arr) => {
+
+    let newArr = mass.map((value, index) => {
         if ((index + 1) % 3 === 0) {
             return {...value,  price: 5}
         } else {
@@ -11,27 +12,7 @@ const getTotalPrice = arr => {
     if(mass.length !== 0) {
     return newArr.reduce((sum, obj) => obj.price + sum, 0);
     }
-        //     return 25
-        // }
-    // if(mass.length === 3){
-    //     return 25
-    // }else if (mass.length > 3){
-    //     console.log(mass[0].price)
-    //     return  25 + (mass.length - 3)*mass[0].price
-    // } else if (mass.length % 3 === 0){
-    //     console.log(mass[0].price)
-    //     return  25 + (mass.length - 3)*mass[0].price
-    // }
 
-
-    // for (let key of mass){
-    //     console.log(key)
-    //     if(mass.length % 3 === 0){
-    //          // mass[key].price = 5
-    //         console.log(mass[key])
-    //     }
-    // }
-    // console.log(mass)
    return  arr.reduce((sum, obj) => obj.price + sum, 0);
 }
 
@@ -68,7 +49,6 @@ const reCart = (state = {
                 [action.payload.id]: {
                     items: currentItems,
                     totalPrice: getTotalPrice(currentItems)
-
                 }
             }
 
