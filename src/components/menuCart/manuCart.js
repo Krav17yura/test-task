@@ -5,16 +5,14 @@ import {useSelector, useDispatch} from "react-redux";
 import {removeCartItem, plusCartItem, minusCartItem} from "../../redux/actions/acCart";
 
 const MenuCart = () => {
-    const {totalPrice, totalCount, cartItems} = useSelector(({reCart}) => reCart)
     const dispatch = useDispatch();
+    const {totalPrice, totalCount, cartItems} = useSelector(({reCart}) => reCart)
     const itemsGroup = Object.keys(cartItems).map((key) => {
         return cartItems[key].items[0]
     })
 
     const onRemoveItem = (id) => {
-        if (window.confirm('Вы действительно хотите удалить?')) {
             dispatch(removeCartItem(id));
-        }
     };
 
     const onPlusItem = (id) => {
@@ -23,7 +21,7 @@ const MenuCart = () => {
 
     const onMinusItem = (id) => {
         dispatch(minusCartItem(id));
-    };
+    }
 
     return(
         <div className='content__cart'>
@@ -33,11 +31,12 @@ const MenuCart = () => {
                     itemsGroup.map(obj => <CartItem
                         {...obj}
                         key={obj.name}
+                        totalCount={cartItems[obj.id].totalCount}
                         totalPrice={cartItems[obj.id].totalPrice}
-                        totalCount={cartItems[obj.id].items.length}
                         onRemoveItem={onRemoveItem}
                         onPlusItem={onPlusItem}
-                        onMinusItem={onMinusItem}/> )
+                        onMinusItem={onMinusItem}
+                      /> )
                 }
 
                 <div className="cart-block__footer">
@@ -45,7 +44,7 @@ const MenuCart = () => {
                         Всего кг фруктов: {totalCount}.
                     </div>
                     <div className="cart-block__footer-totalPrice footer_text">
-                        Сумма заказа: {totalPrice}$
+                        Сумма заказа:{totalPrice}$
                     </div>
                 </div>
             </div> }

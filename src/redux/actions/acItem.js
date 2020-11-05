@@ -24,7 +24,7 @@ export const  fetchItems = () => dispatch => {
             setTimeout(() => {
                 const data = gotServices.getItems();
                 resolve(data)
-            }, 1000)
+            }, 200)
     }))
     p.then(data => {
         return new Promise(((resolve) => {
@@ -32,7 +32,7 @@ export const  fetchItems = () => dispatch => {
 
                 dispatch(setItems(data))
                 resolve()
-            }, 1000)
+            }, 500)
         }))
     }).then( () => dispatch(isLoaded(true)))
         .catch(err => console.log(err))
