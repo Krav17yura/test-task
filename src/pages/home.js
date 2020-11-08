@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchItems} from "../redux/actions/acItem";
 import Loader from "../components/loading/loading";
 import {minusCartItem} from "../redux/actions/acCart";
+import {Grid} from "@material-ui/core";
 
 
 const Home = React.memo( function Home() {
@@ -33,7 +34,25 @@ const Home = React.memo( function Home() {
     };
 
     return (
-        <div className="content__item">
+        <Grid container direction={"row"}   justify="space-around" alignItems="center" >
+            {isLoad ? <Fragment>
+                {items && items.map(obj => (
+                    <ItemBlock
+                        handleAddToCart={handleAddToCart}
+                        key={obj.name}
+                        {...obj}
+                        addedCount={cartItems[obj.id] && cartItems[obj.id].totalCount}
+                        totalPrice={cartItems[obj.id] && cartItems[obj.id].totalPrice}
+                        onMinusItem={onMinusItem}
+                        addItemToCart={addItemToCart}
+                    />
+                ))
+                }
+            </Fragment> : <Loader/>}
+        </Grid>
+
+
+     /*   <div className="content__item">
             {isLoad ? <Fragment>
                 {items && items.map(obj => (
                     <ItemBlock
@@ -48,7 +67,7 @@ const Home = React.memo( function Home() {
                 ))
                 }
             </Fragment> : <Loader/>}
-        </div>
+        </div>*/
     )
 });
 

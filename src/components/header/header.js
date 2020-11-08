@@ -1,37 +1,69 @@
 import React from 'react'
-import './header.css'
-import {Link} from "react-router-dom";
+import {AppBar, Toolbar, Typography} from "@material-ui/core";
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import {makeStyles} from "@material-ui/core/styles";
+import {Grid, Box} from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
+import {NavLink} from "react-router-dom";
 import logoSvg from './fruits.svg'
-import cartIcon from './cart.svg'
 import {useSelector} from "react-redux";
+
+
+const useStyles = makeStyles(() => ({
+    typographyStyles: {
+        flex: 1
+    },
+    cartTotal: {
+        marginTop: -10
+    },
+    root:{
+        width: "100%"
+    }
+}))
+
 
 const Header = () => {
     const {totalCount, totalPrice} = useSelector(({reCart}) => reCart)
-     return (
-        <div className="header">
-            <div className="container">
-                <Link to='/'>
-                <div className="header__logo">
-                        <img className='header__img' width="100" src={logoSvg} alt="Pizza logo"/>
-                        <div>
-                            <h1 className='header__title'>Fruit shop</h1>
-                            <p className='header__subtitle'>Самые свежие фрукты во вселенной</p>
-                        </div>
-                </div>
-                </Link>
-                <div className="header__cart">
-                    <Link to='/cart'>
-                        <img width='50' src={cartIcon} alt=""/>
-                    </Link>
-                    <div className="cart__info">
-                        <ul>
-                            <li>Количество кг: {totalCount}</li>
-                            <li>Сумма заказа:  {totalPrice}$</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
+    const classes = useStyles();
+    return (
+        <AppBar position='static' className={classes.root}>
+            <Toolbar>
+                <Grid className={classes.typographyStyles}>
+                    <NavLink to="/" style={{textDecoration: 'none', color: 'unset'}}>
+                        <Grid container alignItems={"center"}>
+
+                            <Box>
+                                <img src={logoSvg} width="60" alt=''/>
+                            </Box>
+
+                            <Typography variant={'h5'}>
+                                Fruit shop
+                            </Typography>
+                        </Grid>
+                    </NavLink>
+
+                </Grid>
+
+                <Grid item container xs={5} direction={"column"} justify='center' alignItems="flex-end">
+                    <NavLink to="/cart" style={{textDecoration: 'none', color: 'unset'}}>
+                        <IconButton aria-label="shopping cart" color="inherit">
+                            <ShoppingCartIcon/>
+                            <Typography>
+                                {totalCount}
+                            </Typography>
+                        </IconButton>
+                    </NavLink>
+
+                    <Typography className={classes.cartTotal}>
+                        Total: {totalPrice}$
+                    </Typography>
+                </Grid>
+
+            </Toolbar>
+        </AppBar>
+
     )
 };
 
