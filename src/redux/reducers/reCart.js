@@ -1,19 +1,21 @@
-const getSumForOneItems = (item, count) => {
-    let total = 0;
-    if (item[0].sale){
-         for(let i = 1; i <= count; i++){
-             if (i % 3 === 0 ){
-                 total += item[0].price/2
-             }else {
-                 total += item[0].price
-             }
-         }
-        return total
-    }
 
-    return item[0].price * count
+const getSumForOneItems = (item, count) => {
+    let sale = 0;
+    if (item[0].sale){
+        if((count/3)^ 0 ){
+            sale += 5 *  Math.floor(count/3)
+        }
+    }
+    return item[0].price * count - sale
 }
 
+const getOrderSum = (obj) => {
+    let sum = 0;
+    for(let key in obj){
+        sum += obj[key].totalPrice
+    }
+    return sum
+}
 
 const getOrderCount = (obj) => {
     let count = 0;
@@ -23,13 +25,7 @@ const getOrderCount = (obj) => {
     return count
 }
 
-const getOrderSum = (obj) => {
-    let sum = 0;
-    for(let key in obj){
-       sum += obj[key].totalPrice
-    }
-    return sum
-}
+
 
 const reCart = (state = {
     totalPrice: 0,
